@@ -7,7 +7,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         games: resolve(__dirname, 'games/index.html'),
-        // Add other sites/pages as needed
+        about: resolve(__dirname, 'about/index.html'),
+
       }
     }
   },
@@ -23,6 +24,9 @@ export default defineConfig({
         server.middlewares.use((req, res, next) => {
           if (req.url.startsWith('/games')) {
             req.url = '/games/index.html'
+          }
+          else if(req.url.startsWith('/about')) {
+            req.url = '/about/index.html'
           }
           next()
         })
